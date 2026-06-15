@@ -1,0 +1,424 @@
+/* ==========================================================================
+           1. DESIGN SYSTEM & VARIABLES
+           ========================================================================== */
+:root {
+    /* Corporate Color Palette */
+    --bg-deep-slate: #0f172a;
+    --card-bg: #f0f0f0;
+    --primary-indigo: #1d1d1d;
+    --primary-royal: #000000;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --input-bg: #f8fafc;
+
+    /* Animation Timings */
+    --transition-speed: 0.6s;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Premium smooth easing */
+}
+
+/* ==========================================================================
+           2. BASE STYLES & RESET
+           ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* body {
+            
+            overflow: hidden;
+        } */
+
+.bgVL {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+    object-position: center;
+}
+
+.mainL {
+    font-family: 'Inter', sans-serif;
+    background-color: rgba(0, 0, 0, 0.63);
+    /* Radial gradient for a premium deep background */
+    /* background-image: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--text-dark);
+}
+
+/* Typography */
+.h1L {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.pL {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    margin: 1rem 0 2rem;
+}
+
+.spanL {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+/* ==========================================================================
+           3. MAIN CONTAINER & LAYOUT
+           ========================================================================== */
+.containerL {
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    /* Subtle premium border glow */
+    position: relative;
+    overflow: hidden;
+    width: 1000px;
+    max-width: 100%;
+    min-height: 600px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all var(--transition-speed) var(--easing);
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Form Layout */
+form {
+    background-color: var(--card-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+/* ==========================================================================
+           4. UI COMPONENTS (Inputs, Buttons, Socials)
+           ========================================================================== */
+/* Inputs */
+.input-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+input {
+    background-color: var(--input-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px 16px;
+    width: 100%;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--primary-indigo);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    background-color: #fff;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+/* Buttons */
+.btn-L {
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-indigo), var(--primary-royal));
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px 45px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    box-shadow: 0 10px 20px -10px var(--primary-indigo);
+}
+
+.btn-L:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -10px var(--primary-indigo);
+}
+
+.btn-L:active {
+    transform: translateY(1px);
+}
+
+.btn-L.ghost {
+    background: transparent;
+    border: 2px solid #ffffff;
+    box-shadow: none;
+}
+
+.btn-L.ghost:hover {
+    background: rgba(255, 255, 255, 0.267);
+}
+
+/* Custom Checkbox */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 4px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.checkbox-container input:checked+.checkmark {
+    background-color: var(--primary-indigo);
+    border-color: var(--primary-indigo);
+}
+
+.checkbox-container input:checked+.checkmark::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Links */
+.aTagL {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.aTagL:hover {
+    color: var(--primary-indigo);
+}
+
+/* .aTagL::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1.5px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-indigo);
+    transition: width 0.3s ease;
+}
+
+.aTagL:hover::after {
+    width: 100%;
+} */
+
+/* Social Icons */
+.social-container {
+    display: flex;
+    gap: 15px;
+    margin: 1.5rem 0;
+}
+
+.social-btn {
+    border: 1.5px solid var(--border-color);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.social-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+}
+
+.social-btn:hover {
+    border-color: var(--primary-indigo);
+    color: var(--primary-indigo);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.1);
+}
+
+.social-btn:hover svg {
+    transform: scale(1.1);
+}
+
+
+
+/* ==========================================================================
+           5. INTERACTIVE OVERLAY & TRANSITIONS
+           ========================================================================== */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform var(--transition-speed) var(--easing);
+    z-index: 100;
+}
+
+.overlay {
+    background: linear-gradient(135deg, var(--primary-indigo), var(--primary-royal));
+    background-size: 200% 200%;
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform var(--transition-speed) var(--easing);
+}
+
+.overlay h1 {
+    color: #ffffff;
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 60px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform var(--transition-speed) var(--easing),
+        opacity calc(var(--transition-speed) * 0.8) ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+    opacity: 0;
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* ==========================================================================
+           6. SWITCHING MECHANISM (CLASSES TOGGLED VIA JS)
+           ========================================================================== */
+
+/* Move Sign In out */
+.containerL.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+/* Move Sign Up in */
+.containerL.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show calc(var(--transition-speed) + 0.1s) forwards;
+}
+
+/* Move Overlay Container */
+.containerL.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+/* Move Overlay Background to create Parallax effect */
+.containerL.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+/* Overlay Text Transitions */
+.containerL.right-panel-active .overlay-left {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.containerL.right-panel-active .overlay-right {
+    transform: translateX(20%);
+    opacity: 0;
+}
+
+/* Keyframe ensures the sign-up form stays behind the overlay until half-way */
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
